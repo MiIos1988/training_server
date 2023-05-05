@@ -12,18 +12,22 @@ mongoose.connect("mongodb+srv://Milos1988:Milos1988@ip.zaqme7u.mongodb.net/")
 app.use(express.json());
 app.use(cors());
 
-app.post("/api/authentication", async(req, res) => {
+app.post("/api/authentication", async (req, res) => {
     console.log(req.body)
-    try{
+    try {
         const newIp = await ipModel.create(req.body);
         newIp.save();
         res.send("ok");
-    }catch(error){
+    } catch (error) {
         res.send("Error")
     }
 })
 
-
+app.get("/api/get-all-address", (req, res) => {
+    ipModel.find({})
+        .then(data => console.log(data))
+        .catch(err => res.send(err))
+})
 
 app.listen(portNumber, (error) => {
     if (error) {
