@@ -25,7 +25,9 @@ app.post("/api/authentication", async (req, res) => {
 
 app.get("/api/get-all-address", (req, res) => {
     ipModel.find({})
-        .then(data => console.log(data))
+        .then(data => {
+        res.send(data)
+    })
         .catch(err => res.send(err))
 })
 
