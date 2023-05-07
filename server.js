@@ -31,6 +31,18 @@ app.get("/api/get-all-address", (req, res) => {
         .catch(err => res.send(err))
 })
 
+app.delete("/api/items/:id", (req, res) => {
+    const itemId = req.params.id;
+  
+    ipModel.deleteOne({ _id: itemId })
+      .then(() => {
+        res.send("User Deleted!");
+      })
+      .catch((error) => {
+        res.status(500).send("Error");
+      });
+  });
+
 app.listen(portNumber, (error) => {
     if (error) {
         console.log(error)
