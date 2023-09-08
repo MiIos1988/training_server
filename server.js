@@ -13,7 +13,6 @@ app.use(express.json());
 app.use(cors());
 
 app.post("/api/authentication", async (req, res) => {
-    console.log(req.body)
     try {
         const newIp = await ipModel.create(req.body);
         newIp.save();
