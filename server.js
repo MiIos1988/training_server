@@ -42,6 +42,16 @@ app.delete("/api/items/:id", (req, res) => {
       });
   });
 
+  app.delete("/api/delete-all", (req, res) => {
+    ipModel.deleteMany({}, (err) => {
+        if (err) {
+          console.error(err);
+        } else {
+            res.send('All documents have been successfully deleted.');
+        }
+      });
+  });
+
 app.listen(portNumber, (error) => {
     if (error) {
         console.log(error)
