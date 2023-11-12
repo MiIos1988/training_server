@@ -45,7 +45,7 @@ app.delete("/api/items/:id", (req, res) => {
   app.delete("/api/delete-all", (req, res) => {
       ipModel.deleteMany({})
   .then(() => {
-    console.log('All documents have been successfully deleted.');
+    res.send('All documents have been successfully deleted.');
   })
   .catch((err) => {
     console.error(err);
